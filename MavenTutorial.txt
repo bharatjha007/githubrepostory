@@ -1,0 +1,82 @@
+A Build Lifecycle is Made Up of Phases
+Each of these build lifecycles is defined by a different list of build phases, wherein a build phase represents a stage in the lifecycle.
+
+For example, the default lifecycle comprises of the following phases (for a complete list of the lifecycle phases, refer to the Lifecycle Reference):
+
+validate - validate the project is correct and all necessary information is available
+compile - compile the source code of the project
+test - test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
+package - take the compiled code and package it in its distributable format, such as a JAR.
+verify - run any checks on results of integration tests to ensure quality criteria are met
+install - install the package into the local repository, for use as a dependency in other projects locally
+deploy - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
+
+	These lifecycle phases (plus the other lifecycle phases not shown here) are executed sequentially to complete the default lifecycle. Given the lifecycle phases above, this means that when the default lifecycle is used, Maven will first validate the project, then will try to compile the sources, run those against the tests, package the binaries (e.g. jar), run integration tests against that package, verify the integration tests, install the verified package to the local repository, then deploy the installed package to a remote repository.
+
+What is a Build Tool?
+A build tool is a tool that automates everything related to building the software project. Building a software project typically includes one or more of these activities:
+
+1.Generating source code (if auto-generated code is used in the project).
+2.Generating documentation from the source code.
+3.Compiling source code.
+4.Packaging compiled code into JAR files or ZIP files.
+5.Installing the packaged code on a server, in a repository or somewhere else.
+Any given software project may have more activities than these needed to build the finished software. Such activities can normally be plugged into a build tool, so these activities can be automated too.
+
+The advantage of automating the build process is that you minimize the risk of humans making errors while building the software manually. Additionally, an automated build tool is typically faster than a human performing the same steps manually.
+
+Installing Maven
+To install Maven on your own system (computer), go to the Maven download page and follow the instructions there. In summary, what you need to do is:
+
+1.Set the JAVA_HOME environment variable to point to a valid Java SDK (e.g. Java 8).
+2.Download and unzip Maven.
+3.Set the M2_HOME environment variable to point to the directory you unzipped Maven to.
+4.Set the M2 environment variable to point to M2_HOME/bin (%M2_HOME%\bin on Windows, $M2_HOME/bin on unix).
+5.Add M2 to the PATH environment variable (%M2% on Windows, $M2 on unix).
+Open a command prompt and type 'mvn -version' (without quotes) and press enter.
+After typing in the mvn -version command you should be able to see Maven execute, and the version number of Maven written out to the command prompt.
+
+Note: Maven uses Java when executing, so you need Java installed too (and the JAVA_HOME environment variable set as explained above). Maven 3.0.5 needs a Java version 1.5 or later. I use Maven 3.3.3 with Java 8 (u45)
+
+Verison Restriction in maven
+
+(,1.0]          x <= 1.0
+
+1.0        It generally means 1.0 or a later version, if 1.0 is not available.Various Maven plug-ins may interpret this differently, so it is safer to use one of the other, more specific options.
+
+[1.0]     Exactly 1.0
+
+[1.2,1.3]   1.2 <= x <= 1.3
+
+[1.0,2.0)   1.0 <= x < 2.0
+
+[1.5,)       x >= 1.5
+
+(,1.0],[1.2,)    x <= 1.0 or x >= 1.2.
+		Multiple sets are separated by a comma.
+
+(,1.1),(1.1,)   This excludes 1.1 if it is known not to work in combination with the library.
+
+
+
+/***************************************************************************************************************************************************************/
+GITHUB::
+create a new repository on the command line::
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/bharatjha007/githubrepostory.git
+git push -u origin master
+
+push an existing repository from the command line::
+git remote add origin https://github.com/bharatjha007/githubrepostory.git
+git push -u origin master
+
+
+
+for pulling:
+git pull <url>
+
+for cofiguration::
+git config --global user.email ""
+git config --global user.name ""
